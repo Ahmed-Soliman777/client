@@ -1,0 +1,10 @@
+/* styles.css or component.css */
+mat-toolbar {
+  background-color: darkblue !important;
+  color: white !important;
+}
+
+button[mat-raised-button] {
+  border-radius: 12px;
+  font-weight: bold;
+}
