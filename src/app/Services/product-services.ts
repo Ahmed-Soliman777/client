@@ -30,3 +30,4 @@ export class ProductServices {
     return this.http.delete(`${environment.api_base_url}/products/delete/${id}`);
   }
 }
+
