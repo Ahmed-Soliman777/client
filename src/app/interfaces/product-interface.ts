@@ -5,4 +5,5 @@ export interface ProductInterface {
   purshasePrice: number;
   sellingPrice: number;
   discount: number;
+  image: string;
 }
