@@ -4,4 +4,5 @@ export interface ProductInterface {
   shortDescription: string;
   purshasePrice: number;
   sellingPrice: number;
+  discount: number;
 }
