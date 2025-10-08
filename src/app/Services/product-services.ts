@@ -3,9 +3,8 @@ import { environment } from '../../environments/environment.development';
 import { Injectable } from '@angular/core';
 import { ProductInterface } from './../interfaces/product-interface';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductServices {
   constructor(private http: HttpClient) {}
@@ -16,18 +15,16 @@ export class ProductServices {
   getProductsById(id: string) {
     return this.http.get<ProductInterface>(`${environment.api_base_url}/product/${id}`);
   }
-  addProduct(name: string) {
-    return this.http.post(`${environment.api_base_url}/product`, {
-      name: name,
-    });
+  addProduct(productData: ProductInterface) {
+    return this.http.post<ProductInterface>(`${environment.api_base_url}/product/add`, productData);
   }
-  updateProduct(id: string, name: string) {
-    return this.http.put(`${environment.api_base_url}/product/update/${id}`, {
-      name: name,
-    });
+  updateProduct(id: string, productData: ProductInterface) {
+    return this.http.put<ProductInterface>(
+      `${environment.api_base_url}/product/update/${id}`,
+      productData
+    );
   }
   deleteProduct(id: string) {
     return this.http.delete(`${environment.api_base_url}/products/delete/${id}`);
   }
 }
-
