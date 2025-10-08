@@ -18,6 +18,7 @@ import { CategoryInterface } from '../../interfaces/category-interface';
 import { Category } from '../../Services/category';
 import { BrandServices } from '../../Services/brand-services';
 import { ProductInterface } from '../../interfaces/product-interface';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-product-form',
@@ -28,6 +29,7 @@ import { ProductInterface } from '../../interfaces/product-interface';
     MatInputModule,
     MatButtonModule,
     MatSelectModule,
+    MatCheckboxModule,
   ],
   templateUrl: './product-form.html',
   styleUrl: './product-form.css',
@@ -57,6 +59,8 @@ export class ProductForm implements OnInit {
       images: this.formBuilder.array([]),
       categoryId: [null, [Validators.required]],
       brandId: [null, [Validators.required]],
+      isFeature: [false],
+      isNew: [false],
     });
     this.id = this.route.snapshot.params['id'];
     // console.log(this.id);

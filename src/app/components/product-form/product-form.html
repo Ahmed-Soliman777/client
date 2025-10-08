@@ -48,6 +48,10 @@
                 <mat-label>Discount</mat-label>
                 <input type="number" matInput formControlName="discount">
             </mat-form-field>
+            <div class="w-full flex gap-8">
+                <mat-checkbox formControlName="isFeature">Featured</mat-checkbox>
+                <mat-checkbox formControlName="isNew" >New</mat-checkbox>
+            </div>
             <div class="w-full flex flex-col" formArrayName="images">
                 <div class="flex justify-between items-center mb-2.5">
                     <h4 class="text-2xl font-bold">Images</h4>
