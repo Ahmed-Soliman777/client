@@ -12,6 +12,12 @@ export class ProductServices {
   getProducts() {
     return this.http.get<ProductInterface[]>(`${environment.api_base_url}/products`);
   }
+  getNewProducts() {
+    return this.http.get<ProductInterface[]>(`${environment.api_base_url}/products/new-product`);
+  }
+  getFeaturedProducts() {
+    return this.http.get<ProductInterface[]>(`${environment.api_base_url}/products/featured-product`);
+  }
   getProductsById(id: string) {
     return this.http.get<ProductInterface>(`${environment.api_base_url}/product/${id}`);
   }
