@@ -7,4 +7,6 @@ export interface ProductInterface {
   discount: number;
   images: string;
   categoryId: string;
+  isFeature: boolean;
+  isNew: boolean;
 }
