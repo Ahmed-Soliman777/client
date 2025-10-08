@@ -9,7 +9,7 @@
             <input type="text" placeholder="Search for products..."
                 class="flex-grow px-4 py-2 bg-transparent outline-none text-gray-700" />
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">
-                 <mat-icon fontIcon="search" class="p-[2px]"></mat-icon>
+                <mat-icon fontIcon="search" class="p-[2px]"></mat-icon>
             </button>
         </form>
 
@@ -25,12 +25,9 @@
 <nav class="bg-gray-100 border-t border-gray-200">
     <div class="max-w-7xl mx-auto px-4">
         <ul class="flex flex-wrap justify-center gap-4 py-3 text-gray-700 font-medium">
-            <li><a href="#" class="hover:text-blue-600 transition">Electronics</a></li>
-            <li><a href="#" class="hover:text-blue-600 transition">Fashion</a></li>
-            <li><a href="#" class="hover:text-blue-600 transition">Home & Living</a></li>
-            <li><a href="#" class="hover:text-blue-600 transition">Beauty</a></li>
-            <li><a href="#" class="hover:text-blue-600 transition">Sports</a></li>
-            <li><a href="#" class="hover:text-blue-600 transition">Toys</a></li>
+            @for(item of categoryCollection; track $index){
+            <li><a [routerLink]='' class="hover:text-blue-600 transition cursor-pointer">{{item.name}}</a></li>
+            }
         </ul>
     </div>
 </nav>
