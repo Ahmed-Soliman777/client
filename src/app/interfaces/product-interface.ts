@@ -5,6 +5,6 @@ export interface ProductInterface {
   purshasePrice: number;
   sellingPrice: number;
   discount: number;
-  image: string;
+  images: string;
   categoryId: string;
 }
