@@ -6,6 +6,8 @@ import { Brands } from './components/brands/brands';
 import { BrandsForms } from './components/brands-forms/brands-forms';
 import { Products } from './components/products/products';
 import { ProductForm } from './components/product-form/product-form';
+import { ProductList } from './components/product-list/product-list';
+import { ProductDetails } from './components/product-details/product-details';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Ecommerce' },
@@ -21,4 +23,6 @@ export const routes: Routes = [
   { path: 'admin/products/add', component: ProductForm, title: 'Ecommerce Products' },
   { path: 'admin/products/:id', component: ProductForm, title: 'Ecommerce Products' },
   { path: 'admin/products/:id', component: ProductForm, title: 'Ecommerce Products' },
+  { path: 'products', component: ProductList, title: 'Ecommerce Products' },
+  { path: 'product/:id', component: ProductDetails, title: 'Ecommerce Products Details' },
 ];
