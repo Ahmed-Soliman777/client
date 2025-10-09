@@ -4,10 +4,11 @@ import { ProductInterface } from '../../interfaces/product-interface';
 import { CurrencyPipe } from '@angular/common';
 import { ProductCard } from '../product-card/product-card';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CurrencyPipe, ProductCard, CarouselModule],
+  imports: [CurrencyPipe, ProductCard, CarouselModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
