@@ -2,12 +2,13 @@
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-3">
 
         <!-- Logo -->
-        <a href="#" class="text-2xl font-bold text-blue-600">ShopEase</a>
+        <a href="#" class="text-2xl font-bold text-blue-600" routerLink="">ShopEase</a>
 
         <!-- Search Bar -->
         <div class="flex items-center w-full md:w-1/2 bg-gray-100 rounded-full overflow-hidden">
             <input type="text" placeholder="Search for products..."
-                class="flex-grow px-4 py-2 bg-transparent outline-none text-gray-700" (keyup.enter)="onSearch($event)"/>
+                class="flex-grow px-4 py-2 bg-transparent outline-none text-gray-700"
+                (keyup.enter)="onSearch($event)" />
             <button type="submit" class="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">
                 <mat-icon fontIcon="search" class="p-[2px]"></mat-icon>
             </button>
@@ -26,7 +27,8 @@
     <div class="max-w-7xl mx-auto px-4">
         <ul class="flex flex-wrap justify-center gap-4 py-3 text-gray-700 font-medium">
             @for(item of categoryCollection; track $index){
-            <li><a [routerLink]='' class="hover:text-blue-600 transition cursor-pointer">{{item.name}}</a></li>
+            <li (click)="searchCategory(item._id)"><a [routerLink]=''
+                    class="hover:text-blue-600 transition cursor-pointer">{{item.name}}</a></li>
             }
         </ul>
     </div>

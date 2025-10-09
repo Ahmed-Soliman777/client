@@ -26,4 +26,7 @@ export class Header implements OnInit {
       this.router.navigate(['/products'], { queryParams: { search: query } });
     }
   }
+  searchCategory(id: string) {
+    this.router.navigate(['/products'], { queryParams: { categoryId: id } });
+  }
 }
