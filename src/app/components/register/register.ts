@@ -9,10 +9,11 @@ import {
 } from '@angular/forms';
 import { MatFormField, MatInputModule, MatLabel } from '@angular/material/input';
 import { Auth } from '../../Services/auth';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-register',
-  imports: [MatInputModule, MatFormField, MatLabel, FormsModule, ReactiveFormsModule, NgClass],
+  imports: [MatInputModule, MatFormField, MatLabel, FormsModule, ReactiveFormsModule, NgClass, RouterLink],
   templateUrl: './register.html',
   styleUrl: './register.css',
 })
