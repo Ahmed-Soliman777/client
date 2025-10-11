@@ -8,24 +8,29 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { MatFormField, MatInputModule, MatLabel } from '@angular/material/input';
+import { Auth } from '../../Services/auth';
 
 @Component({
   selector: 'app-register',
   imports: [MatInputModule, MatFormField, MatLabel, FormsModule, ReactiveFormsModule, NgClass],
-templateUrl: './register.html',
+  templateUrl: './register.html',
   styleUrl: './register.css',
 })
 export class Register implements OnInit {
   registerForm!: FormGroup;
-  constructor(private formbuilder: FormBuilder) {}
+  constructor(private formbuilder: FormBuilder, private authServices: Auth) {}
   ngOnInit(): void {
     this.registerForm = this.formbuilder.group({
-      name: ['', [Validators.required]],
+      username: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(5)]],
     });
   }
   register() {
-    console.log(this.registerForm.value);
+    // console.log(this.registerForm.value);
+    let value = this.registerForm.value;
+    this.authServices.register(value.username, value.email, value.password).subscribe((result) => {
+      alert('user registered');
+    });
   }
 }
