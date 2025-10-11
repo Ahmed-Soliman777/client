@@ -4,6 +4,7 @@ import { Category } from '../../Services/category';
 import { CategoryInterface } from '../../interfaces/category-interface';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
+import { Auth } from '../../Services/auth';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class Header implements OnInit {
   categoryCollection: CategoryInterface[] = [];
-  constructor(private CategoryServices: Category, private router: Router) {}
+  constructor(private CategoryServices: Category, private router: Router, public authService: Auth) {}
   ngOnInit(): void {
     this.CategoryServices.getCategory().subscribe((result) => {
       this.categoryCollection = result;
