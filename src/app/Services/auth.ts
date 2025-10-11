@@ -29,6 +29,14 @@ export class Auth {
     return null;
   }
 
+get userMail() {
+    let userData = localStorage.getItem('user');
+    if (userData) {
+      return JSON.parse(userData).email;
+    }
+    return null;
+  }
+
   get isLoggedIn() {
     let token = localStorage.getItem('token');
     if (token) {
