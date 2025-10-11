@@ -1,1 +1,41 @@
-<p>login works!</p>
+<div class="flex justify-center items-center mt-10">
+    <div class="bg-white p-10 rounded-2xl shadow-xl w-full max-w-md">
+        <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">Login</h2>
+        <form [formGroup]='loginForm' class="space-y-6">
+
+            <!-- Email -->
+            <div class="relative">
+                <mat-form-field class="w-full">
+                    <mat-label for="email">Email</mat-label>
+                    <input formControlName="email" type="email" required matInput />
+                </mat-form-field>
+            </div>
+
+            <!-- Password -->
+            <div class="relative">
+                <mat-form-field class="w-full">
+                    <mat-label for="password">Password</mat-label>
+                    <input formControlName="password" type="password" required matInput />
+                </mat-form-field>
+            </div>
+
+            <!-- Submit Button -->
+            <button (click)="login()" [disabled]="loginForm.invalid" [ngClass]="{
+    'bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white cursor-pointer shadow-lg':
+      !loginForm.invalid,
+    'bg-gray-300 text-gray-500 cursor-not-allowed shadow-none': loginForm.invalid
+  }" class="w-full py-3 rounded-xl font-semibold transition-all select-none" mat-raised-button>
+                Register
+            </button>
+
+
+
+            <!-- Extra Options -->
+            <p class="text-center text-gray-500 mt-4 text-sm">
+                Don't have an account?
+                <a routerLink="/register"  class="text-blue-500 hover:underline font-medium">Sign up</a>
+            </p>
+
+        </form>
+    </div>
+</div>

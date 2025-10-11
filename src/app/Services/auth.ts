@@ -14,4 +14,10 @@ export class Auth {
       password,
     });
   }
+  login(email: string, password: string) {
+    return this.http.post(`${environment.api_base_url}/login`, {
+      email,
+      password,
+    });
+  }
 }
