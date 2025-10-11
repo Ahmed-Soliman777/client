@@ -28,11 +28,22 @@ export class Auth {
     }
     return null;
   }
-  
+
   get isLoggedIn() {
     let token = localStorage.getItem('token');
     if (token) {
       return true;
+    }
+    return false;
+  }
+
+  get isAdmin() {
+    let user = localStorage.getItem('user');
+    if (user) {
+      let admin = JSON.parse(user).isAdmin;
+      if (admin) {
+        return true;
+      }
     }
     return false;
   }
