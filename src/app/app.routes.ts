@@ -9,6 +9,7 @@ import { ProductForm } from './components/product-form/product-form';
 import { ProductList } from './components/product-list/product-list';
 import { ProductDetails } from './components/product-details/product-details';
 import { Register } from './components/register/register';
+import { Login } from './components/login/login';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Ecommerce' },
@@ -27,4 +28,5 @@ export const routes: Routes = [
   { path: 'products', component: ProductList, title: 'Ecommerce Products' },
   { path: 'product/:id', component: ProductDetails, title: 'Ecommerce Products Details' },
   { path: 'register', component: Register, title: 'Register' },
+  { path: 'login', component: Login, title: 'Login' },
 ];
