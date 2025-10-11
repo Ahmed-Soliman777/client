@@ -1,1 +1,16 @@
-<p>profile works!</p>
+<div class="flex justify-center items-center mt-10">
+    <div class="bg-white p-10 rounded-2xl shadow-xl w-full max-w-md">
+        <h2 class="text-3xl font-extrabold mb-8 text-center text-gray-800">Profile</h2>
+
+
+        <!-- Name -->
+        <div class="mb-4 capitalize">
+            name: {{authService.userName}}
+        </div>
+
+        <!-- Email -->
+        <div class="mb-4 ">
+            Email: {{authService.userMail}}
+        </div>
+    </div>
+</div>
