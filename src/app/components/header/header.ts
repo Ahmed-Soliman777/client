@@ -14,7 +14,11 @@ import { Auth } from '../../Services/auth';
 })
 export class Header implements OnInit {
   categoryCollection: CategoryInterface[] = [];
-  constructor(private CategoryServices: Category, private router: Router, public authService: Auth) {}
+  constructor(
+    private CategoryServices: Category,
+    private router: Router,
+    public authService: Auth
+  ) {}
   ngOnInit(): void {
     this.CategoryServices.getCategory().subscribe((result) => {
       this.categoryCollection = result;
@@ -29,5 +33,8 @@ export class Header implements OnInit {
   }
   searchCategory(id: string) {
     this.router.navigate(['/products'], { queryParams: { categoryId: id } });
+  }
+  logout() {
+    localStorage.clear();
   }
 }
