@@ -11,9 +11,16 @@ import { ProductDetails } from './components/product-details/product-details';
 import { Register } from './components/register/register';
 import { Login } from './components/login/login';
 import { authGuard } from './core/auth-guard';
+import { AdminDashboard } from './components/admin-dashboard/admin-dashboard';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Ecommerce' },
+  {
+    path: 'admin',
+    component: AdminDashboard,
+    title: 'Ecommerce dashboard',
+    canActivate: [authGuard],
+  },
   {
     path: 'admin/categories',
     component: Categoris,
