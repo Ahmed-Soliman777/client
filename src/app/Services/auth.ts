@@ -20,4 +20,20 @@ export class Auth {
       password,
     });
   }
+
+  get userName() {
+    let userData = localStorage.getItem('user');
+    if (userData) {
+      return JSON.parse(userData).username;
+    }
+    return null;
+  }
+  
+  get isLoggedIn() {
+    let token = localStorage.getItem('token');
+    if (token) {
+      return true;
+    }
+    return false;
+  }
 }
