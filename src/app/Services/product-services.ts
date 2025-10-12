@@ -39,12 +39,15 @@ export class ProductServices {
   getProductList(
     searchTerm: string,
     categoryId: string,
+    brandId: string,
+    page:number,
+    pageSize:number,
     sortBy: string,
     sortOrder: number,
-    brandId: string
   ) {
+    // searchTerm, categoryId, brandId, page, pageSize, sortBy, sortOrder
     return this.http.get<ProductInterface[]>(
-      `${environment.api_base_url}/products/list?searchTerm=${searchTerm}&categoryId=${categoryId}&brandId=${brandId}&sortBy=${sortBy}&sortOrder=${sortOrder}`
+      `${environment.api_base_url}/products/list?searchTerm=${searchTerm}&categoryId=${categoryId}&brandId=${brandId}&page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}`
     );
   }
 }

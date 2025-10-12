@@ -30,14 +30,14 @@ export class Header implements OnInit {
     // console.log(event);
     const query = event.target.value.trim();
     if (query) {
-      this.router.navigate(['/products'], { queryParams: { search: query } });
+      this.router.navigate(['/products'], { queryParams: { searchTerm: query } });
     }
   }
   btnSearch(search: any) {
 
     const query = search.trim();
     if (query) {
-      this.router.navigate(['/products'], { queryParams: { search: query } });
+      this.router.navigate(['/products'], { queryParams: { searchTerm: query } });
     }
   }
   searchCategory(id: string) {

@@ -1,1 +1,57 @@
-<p>product-list works!</p>
+<div class="flex px-10 py-5">
+    <div class="w-3/12">
+        <h6 class="text-xl font-bold">Filters</h6>
+        <mat-form-field class="mt-5">
+            <mat-label>Category</mat-label>
+            <mat-select name="categoryId" [(ngModel)]="categoryId" (valueChange)="getProducts()">
+                @for(item of categories; track $index){
+                <mat-option [value]="item._id">{{item.name}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="mt-5">
+            <mat-label>Brand</mat-label>
+            <mat-select name="brandId" [(ngModel)]="brandId" (valueChange)="getProducts()">
+
+                @for(item of brands; track $index){
+                <mat-option [value]="item._id">{{item.name}}</mat-option>
+                }
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="mt-5">
+            <mat-label>Order by</mat-label>
+            <mat-select (valueChange)="orderChange($event)">
+                <mat-option [value]="1">Price low to high</mat-option>
+                <mat-option [value]="-1">Price high to low</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div class="flex-1">
+        <h6 class="text-xl font-bold">Products</h6>
+        <div class="flex flex-wrap gap-2 mt-5">
+            @for(item of products; track $index){
+            <app-product-card [item]="item"></app-product-card>
+            }@empty {
+            <h6 class="text-xl font-bold mt-10">Not items found</h6>
+            }
+        </div>
+        <div class="flex">
+            <div class="flex justify-center items-center gap-4 mt-8">
+                <button mat-raised-button color="primary"
+                    class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    [disabled]="page == 1" (click)="pageChange(page-1)">
+                    ← Previous
+                </button>
+
+                <span class="text-gray-700 font-medium">Page {{ page }}</span>
+
+                <button mat-raised-button color="primary"
+                    class="bg-amber-500 hover:bg-amber-600 text-white font-semibold px-6 py-2 rounded-lg shadow-md transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                    [disabled]="products.length < pageSize" (click)="pageChange(page+1)">
+                    Next →
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
