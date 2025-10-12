@@ -5,15 +5,17 @@ import { CategoryInterface } from '../../interfaces/category-interface';
 import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { Auth } from '../../Services/auth';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-header',
-  imports: [MatIconModule, RouterLink],
+  imports: [MatIconModule, RouterLink, FormsModule],
   templateUrl: './header.html',
   styleUrl: './header.css',
 })
 export class Header implements OnInit {
   categoryCollection: CategoryInterface[] = [];
+  searchTerm!: string;
   constructor(
     private CategoryServices: Category,
     private router: Router,
@@ -25,13 +27,21 @@ export class Header implements OnInit {
     });
   }
   onSearch(event: any) {
-    // console.log(event.target.value);
+    // console.log(event);
     const query = event.target.value.trim();
     if (query) {
       this.router.navigate(['/products'], { queryParams: { search: query } });
     }
   }
+  btnSearch(search: any) {
+
+    const query = search.trim();
+    if (query) {
+      this.router.navigate(['/products'], { queryParams: { search: query } });
+    }
+  }
   searchCategory(id: string) {
+    this.searchTerm = '';
     this.router.navigate(['/products'], { queryParams: { categoryId: id } });
   }
   logout() {

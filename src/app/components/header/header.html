@@ -8,8 +8,8 @@
         <div class="flex items-center w-full md:w-1/2 bg-gray-100 rounded-full overflow-hidden">
             <input type="text" placeholder="Search for products..."
                 class="flex-grow px-4 py-2 bg-transparent outline-none text-gray-700"
-                (keyup.enter)="onSearch($event)" />
-            <button type="submit" class="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700">
+                (keyup.enter)="onSearch($event)" #searchInput [(ngModel)]="searchTerm"/>
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 hover:bg-blue-700 cursor-pointer" (click)="btnSearch(searchInput.value)">
                 <mat-icon fontIcon="search" class="p-[2px]"></mat-icon>
             </button>
         </div>
