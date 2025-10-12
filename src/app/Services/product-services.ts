@@ -40,14 +40,17 @@ export class ProductServices {
     searchTerm: string,
     categoryId: string,
     brandId: string,
-    page:number,
-    pageSize:number,
+    page: number,
+    pageSize: number,
     sortBy: string,
-    sortOrder: number,
+    sortOrder: number
   ) {
     // searchTerm, categoryId, brandId, page, pageSize, sortBy, sortOrder
     return this.http.get<ProductInterface[]>(
       `${environment.api_base_url}/products/list?searchTerm=${searchTerm}&categoryId=${categoryId}&brandId=${brandId}&page=${page}&sortBy=${sortBy}&sortOrder=${sortOrder}`
     );
+  }
+  getProductById(id: string) {
+    return this.http.get<ProductInterface[]>(`${environment.api_base_url}/product/${id}`);
   }
 }

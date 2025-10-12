@@ -10,4 +10,7 @@ import { RouterLink } from '@angular/router';
 })
 export class ProductCard {
   @Input() item!: ProductInterface;
+  get discountPrice() {
+    return this.item.sellingPrice - (this.item.sellingPrice * this.item.discount) / 100;
+  }
 }
