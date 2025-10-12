@@ -16,7 +16,9 @@ export class ProductServices {
     return this.http.get<ProductInterface[]>(`${environment.api_base_url}/products/new-product`);
   }
   getFeaturedProducts() {
-    return this.http.get<ProductInterface[]>(`${environment.api_base_url}/products/featured-product`);
+    return this.http.get<ProductInterface[]>(
+      `${environment.api_base_url}/products/featured-product`
+    );
   }
   getProductsById(id: string) {
     return this.http.get<ProductInterface>(`${environment.api_base_url}/product/${id}`);
@@ -32,5 +34,17 @@ export class ProductServices {
   }
   deleteProduct(id: string) {
     return this.http.delete(`${environment.api_base_url}/products/delete/${id}`);
+  }
+
+  getProductList(
+    searchTerm: string,
+    categoryId: string,
+    sortBy: string,
+    sortOrder: number,
+    brandId: string
+  ) {
+    return this.http.get<ProductInterface[]>(
+      `${environment.api_base_url}/products/list?searchTerm=${searchTerm}&categoryId=${categoryId}&brandId=${brandId}&sortBy=${sortBy}&sortOrder=${sortOrder}`
+    );
   }
 }
