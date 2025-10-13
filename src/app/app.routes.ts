@@ -13,6 +13,7 @@ import { Login } from './components/login/login';
 import { authGuard } from './core/auth-guard';
 import { AdminDashboard } from './components/admin-dashboard/admin-dashboard';
 import { Profile } from './components/profile/profile';
+import { Wishlist } from './components/wishlist/wishlist';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Ecommerce' },
@@ -94,4 +95,5 @@ export const routes: Routes = [
   { path: 'register', component: Register, title: 'Register' },
   { path: 'login', component: Login, title: 'Login' },
   { path: 'profile', component: Profile, title: 'Profile' },
+  { path: 'wishlist', component: Wishlist, title: 'Wishlist' },
 ];

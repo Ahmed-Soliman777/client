@@ -4,6 +4,7 @@ import { ProductServices } from '../../Services/product-services';
 import { ProductInterface } from '../../interfaces/product-interface';
 import { CurrencyPipe } from '@angular/common';
 import { ProductCard } from '../product-card/product-card';
+import { WishlistServices } from '../../Services/wishlist-services';
 
 @Component({
   selector: 'app-product-details',
@@ -15,7 +16,11 @@ export class ProductDetails implements OnInit {
   product!: ProductInterface;
   mainImage!: string;
   similarProducts: ProductInterface[] = [];
-  constructor(private route: ActivatedRoute, private productServices: ProductServices) {}
+  constructor(
+    private route: ActivatedRoute,
+    private productServices: ProductServices,
+    private wishlistService: WishlistServices
+  ) {}
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
 
@@ -62,5 +67,28 @@ export class ProductDetails implements OnInit {
   }
   get discountPrice() {
     return this.product.sellingPrice - (this.product.sellingPrice * this.product.discount) / 100;
+  }
+
+  addToWishList(product: ProductInterface) {
+    // console.log(product);
+    if (this.isInWishList(product)) {
+      this.wishlistService.removeWishList(product._id).subscribe((result) => {
+        this.wishlistService.init();
+      });
+    } else {
+      this.wishlistService.addWishList(product._id).subscribe((result) => {
+        this.wishlistService.init();
+      });
+    }
+  }
+
+  isInWishList(product: ProductInterface) {
+    let isExist = this.wishlistService.wishListProducts.find((x) => x._id === product._id);
+
+    if (isExist) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

@@ -38,11 +38,13 @@
         </p>
 
         <div class="flex gap-4">
-            <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition">
+
+            <button class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-medium transition cursor-pointer">
                 Add to Cart
             </button>
             <button
-                class="border border-gray-300 hover:border-blue-500 hover:text-blue-600 text-gray-700 px-6 py-3 rounded-xl transition">
+                class="border border-gray-300 hover:border-blue-500 hover:text-blue-600 text-gray-700 px-6 py-3 rounded-xl transition cursor-pointer"
+                (click)="addToWishList(product)">
                 Add to Wishlist
             </button>
         </div>

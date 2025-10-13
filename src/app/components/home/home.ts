@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductServices } from '../../Services/product-services';
 import { ProductInterface } from '../../interfaces/product-interface';
-import { CurrencyPipe } from '@angular/common';
 import { ProductCard } from '../product-card/product-card';
 import { CarouselModule, OwlOptions } from 'ngx-owl-carousel-o';
 import { RouterLink } from '@angular/router';
+import { WishlistServices } from '../../Services/wishlist-services';
 
 @Component({
   selector: 'app-home',
-  imports: [CurrencyPipe, ProductCard, CarouselModule, RouterLink],
+  imports: [ProductCard, CarouselModule, RouterLink],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
@@ -40,15 +40,19 @@ export class Home implements OnInit {
   newProducts: ProductInterface[] = [];
   featuredProducts: ProductInterface[] = [];
   bannerImages: ProductInterface[] = [];
-  constructor(private productServices: ProductServices) {}
-    ngOnInit(): void {
-      this.productServices.getNewProducts().subscribe((result) => {
-        this.newProducts = result;
-        this.bannerImages.push(...result)
-      });
+  constructor(
+    private productServices: ProductServices,
+    private wishlistService: WishlistServices
+  ) {}
+  ngOnInit(): void {
+    this.productServices.getNewProducts().subscribe((result) => {
+      this.newProducts = result;
+      this.bannerImages.push(...result);
+    });
     this.productServices.getFeaturedProducts().subscribe((result) => {
       this.featuredProducts = result;
-        this.bannerImages.push(...result)
+      this.bannerImages.push(...result);
     });
+    this.wishlistService.init();
   }
 }
