@@ -31,8 +31,13 @@
         <!-- Add to Cart Button -->
         <div class="flex gap-2 my-1 items-center">
             <!-- Cart button -->
-            <button mat-fab aria-label="Add to cart">
-                <i class="bi bi-cart4 text-xl"></i>
+            <button mat-fab aria-label="Add to cart" (click)="addToCard(item)" >
+                @if(isProductInCart(item._id)){
+                    <mat-icon>remove_shopping_cart</mat-icon>
+                }
+                @else{
+                    <mat-icon>add_shopping_cart</mat-icon>
+                }
             </button>
 
             <!-- Wishlist button -->

@@ -5,6 +5,7 @@ import { ProductInterface } from '../../interfaces/product-interface';
 import { CurrencyPipe } from '@angular/common';
 import { ProductCard } from '../product-card/product-card';
 import { WishlistServices } from '../../Services/wishlist-services';
+import { Cart } from '../../Services/cart';
 
 @Component({
   selector: 'app-product-details',
@@ -19,7 +20,8 @@ export class ProductDetails implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private productServices: ProductServices,
-    private wishlistService: WishlistServices
+    private wishlistService: WishlistServices,
+    private cartServices: Cart
   ) {}
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];
@@ -86,6 +88,26 @@ export class ProductDetails implements OnInit {
     let isExist = this.wishlistService.wishListProducts.find((x) => x._id === product._id);
 
     if (isExist) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  addToCard(item: ProductInterface) {
+    console.log(item);
+    if (!this.isProductInCart(item._id)) {
+      this.cartServices.addToCart(item._id, 1).subscribe(() => {
+        this.cartServices.init();
+      });
+    } else {
+      this.cartServices.removeFromCart(item._id).subscribe(() => {
+        this.cartServices.init();
+      });
+    }
+  }
+  isProductInCart(productId: string) {
+    if (this.cartServices.items.find((x) => x.product._id == productId)) {
       return true;
     } else {
       return false;
