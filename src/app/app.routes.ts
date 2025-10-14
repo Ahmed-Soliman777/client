@@ -14,7 +14,7 @@ import { authGuard } from './core/auth-guard';
 import { AdminDashboard } from './components/admin-dashboard/admin-dashboard';
 import { Profile } from './components/profile/profile';
 import { Wishlist } from './components/wishlist/wishlist';
-import { Cart } from './components/cart/cart';
+import { CartComponent } from './components/cart-component/cart-component';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Ecommerce' },
@@ -97,5 +97,5 @@ export const routes: Routes = [
   { path: 'login', component: Login, title: 'Login' },
   { path: 'profile', component: Profile, title: 'Profile' },
   { path: 'wishlist', component: Wishlist, title: 'Wishlist' },
-  { path: 'cart', component: Cart, title: 'Cart' },
+  { path: 'cart', component: CartComponent, title: 'Cart' },
 ];
