@@ -1,1 +1,78 @@
-<p>cart-component works!</p>
+<div class="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto">
+        <!-- Page title -->
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">Your Shopping Cart</h1>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Cart items section -->
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Single product card -->
+                @for (item of cartItems; track $index) {
+                <div class="flex flex-col sm:flex-row items-center bg-white shadow-md rounded-2xl p-4 sm:p-6">
+                    <img [src]="item.product.images[0]" [alt]="item.product.name"
+                        class="w-28 h-28 object-cover rounded-xl">
+
+                    <div class="flex-1 sm:ml-6 mt-4 sm:mt-0 w-full">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800">{{item.product.name}}</h3>
+                            </div>
+                            <button class="text-red-500 hover:text-red-600 transition cursor-pointer"
+                                (click)="removeCart(item.product._id)">
+                                ✕
+                            </button>
+                        </div>
+
+                        <div class="flex justify-between items-center mt-4">
+                            <div class="flex items-center space-x-2">
+                                <button
+                                    class="px-3 py-1 bg-gray-200 rounded-lg text-gray-600 hover:bg-gray-300 transition"
+                                    [disabled]="item.quantity === 1"
+                                    (click)="decreaseQuantity(item.product._id,  -1)">-</button>
+                                <span class="font-medium">{{item.quantity}}</span>
+                                <button
+                                    class="px-3 py-1 bg-gray-200 rounded-lg text-gray-600 hover:bg-gray-300 transition"
+                                    (click)="increaseQuantity(item.product._id,  1)">+</button>
+                            </div>
+                            <p class="text-lg font-semibold text-gray-700">{{item.product.sellingPrice *
+                                item.quantity|currency}}</p>
+                        </div>
+                    </div>
+                </div>
+                }
+
+            </div>
+
+            <!-- Order summary -->
+            <div class="bg-white shadow-md rounded-2xl p-6 h-fit">
+                <h2 class="text-xl font-bold text-gray-800 mb-6">Order Summary</h2>
+                <div class="space-y-3">
+                    <div class="flex justify-between text-gray-600">
+                        <span>Subtotal</span>
+                        <span>{{ totalPrice | currency }}</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Shipping</span>
+                        <span>$15.00</span>
+                    </div>
+                    <div class="flex justify-between text-gray-600">
+                        <span>Tax</span>
+                        <span>$10.00</span>
+                    </div>
+                </div>
+                <hr class="my-4 border-gray-300">
+                <div class="flex justify-between text-lg font-semibold text-gray-800">
+                    <span>Total</span>
+                    <span>{{ totalPrice + 10 +15 | currency }}</span>
+                </div>
+                <button
+                    class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition">
+                    Proceed to Checkout
+                </button>
+                <p class="text-sm text-gray-500 text-center mt-3">
+                    or <a href="#" class="text-blue-600 hover:underline">Continue Shopping</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
