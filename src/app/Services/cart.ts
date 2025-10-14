@@ -16,7 +16,9 @@ export class Cart {
     });
   }
   init() {
-    this.getCartItems().subscribe((result) => {});
+    this.getCartItems().subscribe((result) => {
+      this.items = result
+    });
   }
   getCartItems() {
     return this.http.get<{ product: ProductInterface; quantity: number }[]>(
