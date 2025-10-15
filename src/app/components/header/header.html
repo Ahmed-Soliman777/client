@@ -18,6 +18,10 @@
 
         @if(authService.isLoggedIn){
         <div class="flex items-center">
+            <a routerLink="/order" class="flex items-center mx-2">
+                <i class="bi bi-shop text-2xl mx-2"></i>
+                <span>orders</span>
+            </a>
             <a routerLink="/wishlist" class="flex items-center">
                 <i class="bi bi-heart text-2xl mx-2"></i>
                 <span>wishlist</span>
