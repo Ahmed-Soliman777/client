@@ -24,4 +24,18 @@ export class OrderServices {
       headers: this.getHeaders(),
     });
   }
+  getAllOrders() {
+    return this.http.get<OrderInterface[]>(`${environment.api_base_url}/admin/order`, {
+      headers: this.getHeaders(),
+    });
+  }
+  updateOrder(id: string, status: string) {
+    return this.http.post<OrderInterface[]>(
+      `${environment.api_base_url}/admin/order/${id}`,
+      { status: status },
+      {
+        headers: this.getHeaders(),
+      }
+    );
+  }
 }
