@@ -1,8 +1,9 @@
 <div class="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
     <div class="max-w-7xl mx-auto">
         <!-- Page title -->
-        <h1 class="text-3xl font-bold text-gray-800 mb-8">Your Shopping Cart</h1>
 
+        @if(orderStep==0){
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">Your Shopping Cart</h1>
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <!-- Cart items section -->
             <div class="lg:col-span-2 space-y-6">
@@ -66,7 +67,8 @@
                     <span>{{ totalPrice + 10 +15 | currency }}</span>
                 </div>
                 <button
-                    class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition">
+                    class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-xl transition"
+                    (click)="checkout()">
                     Proceed to Checkout
                 </button>
                 <p class="text-sm text-gray-500 text-center mt-3">
@@ -74,5 +76,62 @@
                 </p>
             </div>
         </div>
+        }@else if (orderStep == 1){
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">Your Order Address</h1>
+        <form [formGroup]='addressForm' class="space-y-6">
+
+            <!-- Name -->
+            <div class="relative">
+                <mat-form-field class="w-full">
+                    <mat-label for="address1">Address 1</mat-label>
+                    <input formControlName="address1" type="text" matInput />
+                </mat-form-field>
+            </div>
+
+            <!-- Email -->
+            <div class="relative">
+                <mat-form-field class="w-full">
+                    <mat-label for="address2">Address 2</mat-label>
+                    <input formControlName="address2" type="text" matInput />
+                </mat-form-field>
+            </div>
+
+            <!-- Password -->
+            <div class="relative">
+                <mat-form-field class="w-full">
+                    <mat-label for="city">City</mat-label>
+                    <input formControlName="city" type="text" matInput />
+                </mat-form-field>
+            </div>
+
+            <div class="relative">
+                <mat-form-field class="w-full">
+                    <mat-label for="pincode">Pin Code</mat-label>
+                    <input formControlName="pincode" type="text" matInput />
+                </mat-form-field>
+            </div>
+
+            <!-- Submit Button -->
+            <button (click)="addAddress()" [disabled]="addressForm.invalid"
+                class="w-full py-3 rounded-xl font-semibold transition-all select-none" mat-raised-button>
+                Proceed
+            </button>
+
+
+        </form>
+        }@else if(orderStep == 2){
+        <h1 class="text-3xl font-bold text-gray-800 mb-8">Select Payment Method </h1>
+        <div class="px-30 shadow">
+            <mat-radio-group [(ngModel)] = "paymentType">
+                <mat-radio-button value="1">Cash</mat-radio-button>
+                <mat-radio-button value="2" [disabled]="true">Card</mat-radio-button>
+            </mat-radio-group>
+            <button (click)="completeOrder()" class="mt-20" [disabled]="addressForm.invalid"
+                class="w-full py-3 rounded-xl font-semibold transition-all select-none" mat-raised-button>
+                Proceed
+            </button>
+        </div>
+
+        }
     </div>
 </div>
