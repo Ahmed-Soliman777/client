@@ -96,8 +96,8 @@ export const routes: Routes = [
   { path: 'product/:id', component: ProductDetails, title: 'Ecommerce Products Details' },
   { path: 'register', component: Register, title: 'Register' },
   { path: 'login', component: Login, title: 'Login' },
-  { path: 'profile', component: Profile, title: 'Profile', canActivate: [authGuard] },
-  { path: 'wishlist', component: Wishlist, title: 'Wishlist', canActivate: [authGuard] },
-  { path: 'cart', component: CartComponent, title: 'Cart', canActivate: [authGuard] },
-  { path: 'order', component: OrderComponent, title: 'Orders', canActivate: [authGuard] },
+  { path: 'profile', component: Profile, title: 'Profile', },
+  { path: 'wishlist', component: Wishlist, title: 'Wishlist', },
+  { path: 'cart', component: CartComponent, title: 'Cart', },
+  { path: 'order', component: OrderComponent, title: 'Orders', },
 ];
