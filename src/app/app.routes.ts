@@ -15,6 +15,7 @@ import { AdminDashboard } from './components/admin-dashboard/admin-dashboard';
 import { Profile } from './components/profile/profile';
 import { Wishlist } from './components/wishlist/wishlist';
 import { CartComponent } from './components/cart-component/cart-component';
+import { OrderComponent } from './components/order-component/order-component';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Ecommerce' },
@@ -95,7 +96,8 @@ export const routes: Routes = [
   { path: 'product/:id', component: ProductDetails, title: 'Ecommerce Products Details' },
   { path: 'register', component: Register, title: 'Register' },
   { path: 'login', component: Login, title: 'Login' },
-  { path: 'profile', component: Profile, title: 'Profile' },
-  { path: 'wishlist', component: Wishlist, title: 'Wishlist' },
-  { path: 'cart', component: CartComponent, title: 'Cart' },
+  { path: 'profile', component: Profile, title: 'Profile', canActivate: [authGuard] },
+  { path: 'wishlist', component: Wishlist, title: 'Wishlist', canActivate: [authGuard] },
+  { path: 'cart', component: CartComponent, title: 'Cart', canActivate: [authGuard] },
+  { path: 'order', component: OrderComponent, title: 'Orders', canActivate: [authGuard] },
 ];
