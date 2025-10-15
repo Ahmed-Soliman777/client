@@ -101,5 +101,5 @@ export const routes: Routes = [
   { path: 'wishlist', component: Wishlist, title: 'Wishlist', },
   { path: 'cart', component: CartComponent, title: 'Cart', },
   { path: 'order', component: OrderComponent, title: 'Orders', },
-  { path: 'orders', component: AdminOrders, title: 'Orders', canActivate: [authGuard]},
+  { path: 'admin/orders', component: AdminOrders, title: 'Orders', canActivate: [authGuard]},
 ];
