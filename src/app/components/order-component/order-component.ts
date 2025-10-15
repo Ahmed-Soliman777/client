@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderInterface } from '../../interfaces/order-interface';
 import { OrderServices } from './../../Services/order-services';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-order-component',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, NgClass],
   templateUrl: './order-component.html',
   styleUrl: './order-component.css',
 })
