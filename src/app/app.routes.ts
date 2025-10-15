@@ -16,6 +16,7 @@ import { Profile } from './components/profile/profile';
 import { Wishlist } from './components/wishlist/wishlist';
 import { CartComponent } from './components/cart-component/cart-component';
 import { OrderComponent } from './components/order-component/order-component';
+import { AdminOrders } from './components/admin-orders/admin-orders';
 
 export const routes: Routes = [
   { path: '', component: Home, title: 'Ecommerce' },
@@ -100,4 +101,5 @@ export const routes: Routes = [
   { path: 'wishlist', component: Wishlist, title: 'Wishlist', },
   { path: 'cart', component: CartComponent, title: 'Cart', },
   { path: 'order', component: OrderComponent, title: 'Orders', },
+  { path: 'orders', component: AdminOrders, title: 'Orders', canActivate: [authGuard]},
 ];
