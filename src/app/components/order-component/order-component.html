@@ -13,6 +13,14 @@
                     <div class="shadow-sm p-2 rounded-2xl">
                         Order Id : {{item._id}}
                     </div>
+                    <div class="mt-2.5 text-2xl font-semibold" [ngClass]="{
+    'text-green-600': item.status === 'Delivered',
+    'text-yellow-500': item.status === 'In Progress',
+    'text-blue-600': item.status === 'Shipped'
+  }">
+                        {{ item.status }}
+                    </div>
+
                     <div class="flex flex-col sm:flex-row items-center mt-2.5">
                         <img [src]="product.product.images[0]" [alt]="product.product.name"
                             class="w-28 h-28 object-cover rounded-xl">
@@ -33,12 +41,15 @@
                                     <span class="font-medium">Quantity : {{product.quantity}}</span>
                                     @if(product.product.discount){
                                     <div class="">
-                                        <p class="text-lg font-semibold text-blue-500">{{(product.product.sellingPrice -
-                                            ((product.product.sellingPrice * product.product.discount) / 100)) *
-                                            product.quantity | currency}}</p>
-                                        <p class="text-lg font-semibold text-gray-700 line-through ">
-                                            {{product.product.sellingPrice * product.quantity|
-                                            currency}}</p>
+                                        <div class="">
+                                            <p class="text-lg font-semibold text-blue-500">
+                                                {{(product.product.sellingPrice -
+                                                ((product.product.sellingPrice * product.product.discount) / 100)) *
+                                                product.quantity | currency}}</p>
+                                            <p class="text-lg font-semibold text-gray-700 line-through ">
+                                                {{product.product.sellingPrice * product.quantity|
+                                                currency}}</p>
+                                        </div>
                                     </div>
                                     }
                                     @else{
