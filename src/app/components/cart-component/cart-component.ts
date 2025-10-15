@@ -77,7 +77,7 @@ export class CartComponent implements OnInit {
       data: new Date(),
       totalAmount: this.totalPrice,
     };
-    this.orderService.addOrder(order).subscribe((result) => {
+    this.orderService.addOrder(order).subscribe(() => {
       alert('Your order is completed');
       this.cartService.init()
       this.orderStep = 0
